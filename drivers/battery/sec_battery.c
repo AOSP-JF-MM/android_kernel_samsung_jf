@@ -1529,7 +1529,6 @@ static void sec_bat_get_battery_info(
 		POWER_SUPPLY_PROP_VOLTAGE_AVG, value);
 	battery->voltage_ocv = value.intval;
 
-	/*
 	psy_do_property("sec-fuelgauge", get,
 		POWER_SUPPLY_PROP_CURRENT_NOW, value);
 	battery->current_now = value.intval;
@@ -1537,7 +1536,6 @@ static void sec_bat_get_battery_info(
 	psy_do_property("sec-fuelgauge", get,
 		POWER_SUPPLY_PROP_CURRENT_AVG, value);
 	battery->current_avg = value.intval;
-	*/
 
 	/* To get SOC value (NOT raw SOC), need to reset value */
 	value.intval = 0;
@@ -1546,10 +1544,12 @@ static void sec_bat_get_battery_info(
 	battery->capacity = value.intval;
 
 	/* read current info from charger */
+	/*
 	psy_do_property("sec-charger", get,
 			POWER_SUPPLY_PROP_CURRENT_NOW, value);
 	battery->current_now = value.intval;
 	battery->current_avg = sec_bat_get_current_average(battery);
+	*/
 
 	switch (battery->pdata->thermal_source) {
 	case SEC_BATTERY_THERMAL_SOURCE_FG:
